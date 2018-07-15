@@ -1,0 +1,49 @@
+【项目信息】
+项目名称 : dbcp
+中文名称 : 数据连接池
+项目版本 : version 1.0
+
+主要技术 : 
+
+项目描述 : 
+
+项目备注 : apache commons database connection pool 数据库连接池
+commons-dbcp.jar: 连接池的实现、commons-pool.jar: 连接池实现的依赖库
+【项目规划】
+
+1)
+
+2)
+
+3)
+
+4)
+
+5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
