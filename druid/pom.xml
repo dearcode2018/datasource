@@ -7,13 +7,14 @@
 		<artifactId>datasource-entire</artifactId>
 		<version>0.0.1</version>
 	</parent>	
-	<artifactId>dbcp</artifactId>
+	<artifactId>druid</artifactId>
 	<packaging>jar</packaging>
-	<name>dbcp</name>
+	<name>druid</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<datasource.core.version>0.0.1</datasource.core.version>
+		<druid.version>1.1.10</druid.version>
 		
 	</properties>
 
@@ -23,6 +24,12 @@
 			<artifactId>datasource-core</artifactId>
 			<version>${datasource.core.version}</version>
 		</dependency>
+
+	<dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>druid</artifactId>
+	    <version>${druid.version}</version>
+	</dependency>
 		
 	</dependencies>
 
