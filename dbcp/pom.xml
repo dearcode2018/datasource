@@ -14,7 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<dbcp.core.version>0.0.1</dbcp.core.version>
-		
+		<commons.dbcp2.version>2.5.0</commons.dbcp2.version>
 	</properties>
 
 	<dependencies>
@@ -23,6 +23,13 @@
 			<artifactId>dbcp-core</artifactId>
 			<version>${dbcp.core.version}</version>
 		</dependency>
+
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-dbcp2</artifactId>
+	    <version>${commons.dbcp2.version}</version>
+	</dependency>
+
 		
 	</dependencies>
 
