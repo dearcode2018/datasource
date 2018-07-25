@@ -7,15 +7,13 @@
 		<artifactId>dbcp-entire</artifactId>
 		<version>0.0.1</version>
 	</parent>	
-	<artifactId>druid</artifactId>
+	<artifactId>dbcp-template</artifactId>
 	<packaging>jar</packaging>
-	<name>druid</name>
+	<name>dbcp-template</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<dbcp.core.version>0.0.1</dbcp.core.version>
-		<druid.version>1.1.10</druid.version>
-		
 	</properties>
 
 	<dependencies>
@@ -24,12 +22,6 @@
 			<artifactId>dbcp-core</artifactId>
 			<version>${dbcp.core.version}</version>
 		</dependency>
-
-	<dependency>
-	    <groupId>com.alibaba</groupId>
-	    <artifactId>druid</artifactId>
-	    <version>${druid.version}</version>
-	</dependency>
 		
 	</dependencies>
 

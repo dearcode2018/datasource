@@ -7,29 +7,28 @@
 		<artifactId>dbcp-entire</artifactId>
 		<version>0.0.1</version>
 	</parent>	
-	<artifactId>druid</artifactId>
+	<artifactId>dbcp-core</artifactId>
 	<packaging>jar</packaging>
-	<name>druid</name>
+	<name>dbcp-core</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<dbcp.core.version>0.0.1</dbcp.core.version>
-		<druid.version>1.1.10</druid.version>
-		
+		<common.version>0.0.1</common.version>
+		<mysql.driver.version>8.0.11</mysql.driver.version>		
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.hua</groupId>
-			<artifactId>dbcp-core</artifactId>
-			<version>${dbcp.core.version}</version>
+			<artifactId>common</artifactId>
+			<version>${common.version}</version>
 		</dependency>
 
-	<dependency>
-	    <groupId>com.alibaba</groupId>
-	    <artifactId>druid</artifactId>
-	    <version>${druid.version}</version>
-	</dependency>
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${mysql.driver.version}</version>
+		</dependency>	
 		
 	</dependencies>
 

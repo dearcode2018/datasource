@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.hua</groupId>
-		<artifactId>datasource-entire</artifactId>
+		<artifactId>dbcp-entire</artifactId>
 		<version>0.0.1</version>
 	</parent>	
 	
@@ -13,15 +13,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<datasource.core.version>0.0.1</datasource.core.version>
+		<dbcp.core.version>0.0.1</dbcp.core.version>
 		<hikaricp.version>3.1.0</hikaricp.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.hua</groupId>
-			<artifactId>datasource-core</artifactId>
-			<version>${datasource.core.version}</version>
+			<artifactId>dbcp-core</artifactId>
+			<version>${dbcp.core.version}</version>
 		</dependency>
 	
 	<!--  -->

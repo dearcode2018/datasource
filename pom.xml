@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hua</groupId>
-  <artifactId>datasource-entire</artifactId>
+  <artifactId>dbcp-entire</artifactId>
   <version>0.0.1</version>
   <packaging>pom</packaging>
-  <name>datasource-entire</name>
-  <description>datasource Maven Entire Project</description>
+  <name>dbcp-entire</name>
+  <description>dbcp Maven Entire Project</description>
   
   	<!-- 模块-子项目 -->
 	<modules>
 		<!-- 模板 -->
-		<module>datasource-template</module>		
-		<module>datasource-core</module>		
+		<module>dbcp-template</module>		
+		<module>dbcp-core</module>		
 		<module>dbcp</module>		
 		<module>c3p0</module>		
 		<module>hikaricp</module>		
