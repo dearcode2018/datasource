@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * SqlTest.java
+ * DruidTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.database;
+package com.hua.test.dbcp;
 
 // 静态导入
 import static org.junit.Assert.assertArrayEquals;
@@ -20,13 +20,10 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.hua.test.BaseTest;
 
 
@@ -34,10 +31,71 @@ import com.hua.test.BaseTest;
  * 描述: 
  * 
  * @author qye.zheng
- * SqlTest
+ * DruidTest
  */
-public final class SqlTest extends BaseTest {
+public final class DruidTest extends BaseTest {
 
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testDruid() {
+		try {
+			DruidDataSource druidDataSource = new DruidDataSource();
+			
+			druidDataSource.setUsername("root");
+			druidDataSource.setPassword("root");
+			druidDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/datasource?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai");
+			druidDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+			// 连接关闭自动提交: false
+			druidDataSource.setDefaultAutoCommit(false);
+			druidDataSource.setName("mysqlDataSource");
+			
+			// 连接池最大连接数
+			druidDataSource.setMaxActive(50);
+			// 连接初始连接数
+			druidDataSource.setInitialSize(30);
+			// 最大空闲时间: 毫秒. 超过时间则连接被丢弃
+			druidDataSource.setMaxWait(5000);
+			
+			druidDataSource.setTestOnBorrow(true);
+			// 查询超时时间 秒
+			druidDataSource.setQueryTimeout(10);
+			druidDataSource.setOracle(false);
+			druidDataSource.setDefaultReadOnly(false);
+			
+			// 空闲时检查
+			druidDataSource.setTestWhileIdle(true);
+			
+			
+			//druidDataSource.getConnection();
+			
+			druidDataSource.close();
+		} catch (Exception e) {
+			log.error("testDruid =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void test() {
+		try {
+			
+			
+		} catch (Exception e) {
+			log.error("test =====> ", e);
+		}
+	}
+	
 	/**
 	 * 
 	 * 描述: 
@@ -100,116 +158,6 @@ public final class SqlTest extends BaseTest {
 		} catch (Exception e) {
 			log.error("testBase =====> ", e);
 		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	@Test
-	public void test() {
-		try {
-			
-			
-		} catch (Exception e) {
-			log.error("test =====> ", e);
-		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 普通测试方法
-	 ,@Test注解 不带参数
-	 * @author qye.zheng
-	 * 
-	 */
-	@Test
-	public void testNormal() {
-		System.out.println("testNormal()");
-	}
-	
-	/**
-	 * 
-	 * 描述: 期望发生异常-测试方法
-	 ,@Test注解 异常
-	 * @author qye.zheng
-	 * 
-	 */
-	@Test(expected=NullPointerException.class)
-	@SuppressWarnings("all")
-	public void testException() {
-		String str = null;
-		System.out.println(str.length());
-	}
-	
-	/**
-	 * 
-	 * 描述: 超时测试方法
-	 ,@Test注解 指定运行时间 (单位 : 毫秒)
-	 * @author qye.zheng
-	 * 
-	 */
-	@Test(timeout=3000)
-	public void testTimeOut() {
-		System.out.println("testTimeOut()");
-	}
-	
-	/**
-	 * 
-	 * 描述: 测试忽略的方法
-	 * @author qye.zheng
-	 * 
-	 */
-	@Ignore("暂时忽略的方法")
-	@Test
-	public void ignoreMethod() {
-		System.out.println("ignoreMethod()");
-	}
-	
-	/**
-	 * 
-	 * 描述: [所有测试]开始之前运行
-	 * @author qye.zheng
-	 * 
-	 */
-	@BeforeClass
-	public static void beforeClass() {
-		System.out.println("beforeClass()");
-	}
-	
-	/**
-	 * 
-	 * 描述: [所有测试]结束之后运行
-	 * @author qye.zheng
-	 * 
-	 */
-	@AfterClass
-	public static void afterClass() {
-		System.out.println("afterClass()");
-	}
-	
-	/**
-	 * 
-	 * 描述: [每个测试-方法]开始之前运行
-	 * @author qye.zheng
-	 * 
-	 */
-	@Before
-	public void beforeMethod() {
-		System.out.println("beforeMethod()");
-	}
-	
-	/**
-	 * 
-	 * 描述: [每个测试-方法]结束之后运行
-	 * @author qye.zheng
-	 * 
-	 */
-	@After
-	public void afterMethod() {
-		System.out.println("afterMethod()");
 	}
 	
 	/**

@@ -46,9 +46,46 @@ public final class C3p0Util
 			 */
 			// 创建数据源对象
 			
-			dataSource = new ComboPooledDataSource();
-			// 将Map中的属性拷贝到dataSource对象
-			//BeanUtil.copyProperties(dataSource, C3p0Param.getProps());
+			ComboPooledDataSource pooledDataSource = new ComboPooledDataSource();
+			pooledDataSource.setUser("root");
+			pooledDataSource.setPassword("root");
+			pooledDataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/datasource?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai");
+			pooledDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
+			// 连接关闭自动提交: false
+			pooledDataSource.setAutoCommitOnClose(false);
+			pooledDataSource.setDataSourceName("mysqlDataSource");
+			// 连接池最大连接数
+			pooledDataSource.setMaxPoolSize(50);
+			// 连接初始连接数，值在 min和max之间
+			pooledDataSource.setInitialPoolSize(30);
+			// 连接池最小连接数
+			pooledDataSource.setMinPoolSize(20);
+			// 最大空闲时间: 秒. 超过时间则连接被丢弃
+			pooledDataSource.setMaxIdleTime(5000);
+			// 最大语句数 PreparedStatement 数量 0-缓存关闭
+			pooledDataSource.setMaxStatements(100);
+			// 单个连接所拥有的最大缓存statement数量
+			pooledDataSource.setMaxStatementsPerConnection(10);
+			
+			//pooledDataSource.setMaxConnectionAge(0);
+			
+			// 连接的测试语句
+			pooledDataSource.setPreferredTestQuery("SELECT 1");
+			
+			// 取得连接的同时将检查连接的有效性
+			pooledDataSource.setTestConnectionOnCheckin(true);
+			// 连接提交的时候检查其有效性 | 性能消耗大，仅在需要的时候开启
+			pooledDataSource.setTestConnectionOnCheckout(false);
+			
+			// 异步帮助线程的数量，可以提升执行效率
+			pooledDataSource.setNumHelperThreads(3);
+			
+			// 连接池用完时，客户端从连接池获取连接的等待时间，毫秒数，0-表示无限期等待
+			pooledDataSource.setCheckoutTimeout(5000);
+			// 间隔多少秒检查连接池中的空闲连接
+			pooledDataSource.setIdleConnectionTestPeriod(0);
+			
+			dataSource = pooledDataSource;
 		} catch (Exception e)
 		{
 			e.printStackTrace();
