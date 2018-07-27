@@ -16,6 +16,8 @@
 		<module>c3p0</module>		
 		<module>hikaricp</module>		
 		<module>druid</module>
+		<module>tomcat-dbcp</module>
+		<module>vibur-dbcp</module>
 		<!--
 		<module></module>	
 		-->

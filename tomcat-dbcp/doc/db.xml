@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	   default-lazy-init="false" 
+	   default-autowire="no"> 
+
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+   <property name="driverClass" value="${db.jdbc.c3p0.driverClass}"/>
+   <property name="jdbcUrl" value="${db.jdbc.c3p0.jdbcUrl}"/>
+   <property name="user" value="${db.jdbc.c3p0.user}"/>
+   <property name="password" value="${db.jdbc.c3p0.password}"/>
+   <property name="maxPoolSize" value="${db.jdbc.c3p0.maxPoolSize}"/>
+   <property name="minPoolSize" value="${db.jdbc.c3p0.minPoolSize}"/>
+   <property name="initialPoolSize" value="${db.jdbc.c3p0.initialPoolSize}"/>
+   <property name="acquireIncrement" value="${db.jdbc.c3p0.acquireIncrement}"/>
+   <property name="checkoutTimeout" value="${db.jdbc.c3p0.checkoutTimeout}"/>
+   <property name="maxIdleTime" value="${db.jdbc.c3p0.maxIdleTime}"/>
+   <property name="idleConnectionTestPeriod" value="${db.jdbc.c3p0.idleConnectionTestPeriod}"/>
+   <property name="acquireRetryAttempts" value="${db.jdbc.c3p0.acquireRetryAttempts}"/>
+   <property name="breakAfterAcquireFailure" value="${db.jdbc.c3p0.breakAfterAcquireFailure}"/>
+   <property name="testConnectionOnCheckout" value="${db.jdbc.c3p0.testConnectionOnCheckout}"/>                 
+</bean> 
+
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+   <property name="dataSource" ref="dataSource"/>  
+   <property name="typeAliasesPackage" value="com.xyt.ocr.entity" /> 
+   <!-- mapper和resultmap配置路径 -->   
+   <property name="mapperLocations">  
+        <list>  
+         	<value>classpath:/conf/mybatis/ent/*Mapper.xml</value >
+     		<value>classpath:/conf/mybatis/opt/*Mapper.xml</value >
+     	    <value>classpath:/conf/mybatis/pro/*Mapper.xml</value > 
+     	    <value>classpath:/conf/mybatis/vip/*Mapper.xml</value >
+     	     <value>classpath:/conf/mybatis/sys/*Mapper.xml</value > 
+     	     <value>classpath:/conf/mybatis/gov/*Mapper.xml</value > 
+         </list>       
+   </property>
+</bean>
+ 
+<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+   <property name="basePackage" value="com.xyt.ocr.mapper"/>   
+   <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+</bean>
+  
+<!-- ================================ 数据库事物部分 ========================================= -->
+<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource" />
+</bean>
+  
+<tx:advice id="txAdvice" transaction-manager="txManager">  
+   <tx:attributes>  
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="insert*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="add*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="do*"/>
+	  <tx:method propagation="REQUIRED" rollback-for="Throwable" name="create*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="save*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="del*"/>
+	  <tx:method propagation="REQUIRED" rollback-for="Throwable" name="remove*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="update*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="modify*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="tx*"/>
+      <tx:method propagation="REQUIRED" rollback-for="Throwable" name="deal*"/>
+      <tx:method read-only="true" name="*"/>  
+    </tx:attributes>  
+</tx:advice> 
+ 
+<aop:config>  
+    <aop:pointcut id="allServiceOperation" expression="execution(* com.xyt.ocr..service..*(..))"/>  
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="allServiceOperation"/> 	
+</aop:config>    
+
+</beans>
