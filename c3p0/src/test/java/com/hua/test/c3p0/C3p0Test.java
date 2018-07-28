@@ -217,6 +217,8 @@ public final class C3p0Test extends BaseTest {
 				connection.setAutoCommit(false);
 				System.out.println("connection-" + (i + 1) + ": " + connection.toString());
 				ps = connection.prepareStatement(sql);
+				// 查询超时时间，秒
+				ps.setQueryTimeout(5);
 				connection.commit();
 				connection.close();
 			}

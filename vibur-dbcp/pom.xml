@@ -15,6 +15,7 @@
 		
 		<dbcp.core.version>0.0.1</dbcp.core.version>
 		<vibur.dbcp.version>22.2</vibur.dbcp.version>
+		<google.concurrentlinkedhashmap.version>1.4.2</google.concurrentlinkedhashmap.version>
 	</properties>
 
 	<dependencies>
@@ -29,6 +30,13 @@
 		    <artifactId>vibur-dbcp</artifactId>
 		    <version>${vibur.dbcp.version}</version>
 		</dependency>		
+
+	<dependency>
+	    <groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+	    <artifactId>concurrentlinkedhashmap-lru</artifactId>
+	    <version>${google.concurrentlinkedhashmap.version}</version>
+	</dependency>
+
 		
 	</dependencies>
 
