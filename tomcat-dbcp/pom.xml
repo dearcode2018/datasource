@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.hua</groupId>
 		<artifactId>dbcp-entire</artifactId>
-		<version>0.0.1</version>
+		<version>1.0.0</version>
 	</parent>	
 	<artifactId>tomcat-dbcp</artifactId>
 	<packaging>jar</packaging>
@@ -13,7 +13,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<dbcp.core.version>0.0.1</dbcp.core.version>
 		<tomcat.jdbc.version>9.0.10</tomcat.jdbc.version>
 	</properties>
 

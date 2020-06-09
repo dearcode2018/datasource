@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hua</groupId>
   <artifactId>dbcp-entire</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
   <name>dbcp-entire</name>
   <description>dbcp Maven Entire Project</description>
@@ -12,7 +12,7 @@
 		<!-- 模板 -->
 		<module>dbcp-template</module>		
 		<module>dbcp-core</module>		
-		<module>dbcp</module>		
+		<module>common-dbcp</module>
 		<module>c3p0</module>		
 		<module>hikaricp</module>		
 		<module>druid</module>
@@ -35,6 +35,7 @@
 		<maven.plugin.resources.version>2.7</maven.plugin.resources.version>
 		<maven.plugin.dependency.version>2.10</maven.plugin.dependency.version>
 		<maven.plugin.war.version>3.0</maven.plugin.war.version>
+		<dbcp.core.version>1.0.0</dbcp.core.version>		
 	</properties>  
   
   
