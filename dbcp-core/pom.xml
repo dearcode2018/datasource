@@ -11,10 +11,7 @@
 	<packaging>jar</packaging>
 	<name>dbcp-core</name>
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
 		<common.version>0.0.1</common.version>
-		<mysql.driver.version>8.0.11</mysql.driver.version>		
 	</properties>
 
 	<dependencies>
@@ -27,9 +24,21 @@
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-		    <version>${mysql.driver.version}</version>
 		</dependency>	
 		
 	</dependencies>
+
+	<!-- 依赖管理 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+		</dependencies>
+	
+	</dependencyManagement>
+
 
 </project>

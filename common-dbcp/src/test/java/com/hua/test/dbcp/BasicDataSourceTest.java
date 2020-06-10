@@ -20,6 +20,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import org.apache.commons.dbcp2.BasicDataSourceFactory;
 import org.junit.Ignore;
 import org.junit.Test;
 

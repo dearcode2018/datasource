@@ -48,9 +48,8 @@ public final class DbcpTest extends BaseTest {
 	 *
 	 * 创建: 从数据库获取连接
 	 * 
-	 * 租借: 指客户端从连接池获取连接
+	 * 租借: 客户端从连接池获取连接
 	 * 
-	 * DBCP专有
 	 * 驱逐线程: 驱逐符合条件的空闲连接的线程
 	 * 
 	 */
